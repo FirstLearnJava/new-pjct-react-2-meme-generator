@@ -26,6 +26,7 @@
     "axios": "^1.6.3",
     "cheerio": "1.0.0-rc.12",
     "fetch": "^1.1.0",
+    "file-saver": "^2.0.5",
     "new-pjct-react-2-meme-generator": "link:",
     "parse5": "^7.1.2",
     "react": "^18.2.0",

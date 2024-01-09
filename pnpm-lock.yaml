@@ -17,6 +17,9 @@ dependencies:
   fetch:
     specifier: ^1.1.0
     version: 1.1.0
+  file-saver:
+    specifier: ^2.0.5
+    version: 2.0.5
   new-pjct-react-2-meme-generator:
     specifier: 'link:'
     version: 'link:'
@@ -5463,6 +5466,10 @@ packages:
       webpack: 5.89.0
     dev: false
 
+  /file-saver@2.0.5:
+    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==}
+    dev: false
+
   /filelist@1.0.4:
     resolution: {integrity: sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q==}
     dependencies:
@@ -8068,6 +8075,7 @@ packages:
 
   /postcss-media-query-parser@0.2.3:
     resolution: {integrity: sha512-3sOlxmbKcSHMjlUXQZKQ06jOswE7oVkXPxmZdoB1r5l0q6gTFTQSHxNxOrCccElbW7dxNytifNEo8qidX2Vsig==}
+    requiresBuild: true
     dev: true
 
   /postcss-merge-longhand@5.1.7(postcss@8.4.32):
