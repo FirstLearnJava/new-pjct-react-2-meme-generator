@@ -27,6 +27,7 @@ export default function MemeGenerator(props) {
     function getRandomUrl() {
       const fetchedUrl = memeUrls[Math.floor(mathRandom * memeUrls.length)];
       const correspondingId = memeIds[Math.floor(mathRandom * memeIds.length)];
+      console.log(fetchedUrl);
       //setPngUrl(fetchedUrl);
       if (memeTemplateUrl) {
         setPngUrl(memeTemplateUrl);
@@ -44,19 +45,20 @@ export default function MemeGenerator(props) {
   useEffect(() => {
     if (pngUrl) {
       function changeUrlToJpgFormat() {
-        const jpgUrl = `${pngUrl.split('.png').join(``)}`;
+        const jpgUrl = `${pngUrl.split('.jpg').join(``)}`;
         const captionedUrl = `${jpgUrl}${props.topCaption ? '/' : ''}${
           props.topCaption
         }${props.bottomCaption ? '/' : ''}${props.bottomCaption}.jpg`;
         setRandomUrl(captionedUrl);
+        console.log('captionedUrl:', captionedUrl);
       }
       changeUrlToJpgFormat();
     }
   }, [pngUrl, props.topCaption, props.bottomCaption]);
 
-  /* function downloadImage() {
-    FileSaver.saveAs(randomUrl, `${currentId}.jpg`);
-  } */
+  function downloadImage() {
+    saveAs(randomUrl, `${currentId}.jpg`);
+  }
 
   return (
     <>
@@ -85,13 +87,7 @@ export default function MemeGenerator(props) {
           }}
         ></input>
       </label>
-      <button
-        onClick={() => {
-          saveAs(randomUrl, `${currentId}.jpg`);
-        }}
-      >
-        Download
-      </button>
+      <button onClick={() => downloadImage()}>Download</button>
     </>
   );
 }
