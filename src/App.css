@@ -7,7 +7,7 @@
   align-items: center;
   background-color: #edf7f6;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 .imageContainer {
   display: flex;
@@ -29,7 +29,7 @@ button {
   background-color: darkblue;
   color: white;
   border-radius: 6px;
-  padding-top: 6px;
+  padding-top: 4px;
   padding-bottom: 6px;
   width: 150px;
   font-size: 14px;
@@ -44,14 +44,46 @@ button:hover {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 2.2rem;
   margin-bottom: 0.8rem;
+  color: rgb(6, 6, 40);
 }
 .memeImg {
   margin-bottom: 1rem;
-  border-radius: 2px;
+  border-radius: 3px;
+  height: 400px;
+  width: 460px;
 }
 .selectMemeButton {
   margin-bottom: 18px;
 }
 .memeTemplateInput {
   align-self: start;
+}
+.buttonContainer {
+  height: 48px;
+}
+@media (max-width: 576px) {
+  .memeImg {
+    height: 260px;
+    width: 300px;
+  }
+  .imageContainer > label > input {
+    width: 160px;
+  }
+  .imageContainer > label {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .title {
+    font-size: 26px;
+    font-weight: 600;
+  }
+  button {
+    background-color: darkblue;
+    color: white;
+    border-radius: 6px;
+    padding-top: 4px;
+    padding-bottom: 6px;
+    width: 130px;
+    font-size: 13px;
+  }
 }

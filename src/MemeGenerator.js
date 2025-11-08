@@ -68,18 +68,18 @@ export default function MemeGenerator() {
         <img
           className="memeImg"
           src={randomUrl}
-          height="400"
-          width="460"
           data-test-id="meme-image"
         ></img>
-        <button
-          className="selectMemeButton"
-          onClick={() => setMathRandom(Math.random())}
-        >
-          Load meme
-        </button>
+        <div className="buttonContainer">
+          <button
+            className="selectMemeButton"
+            onClick={() => setMathRandom(Math.random())}
+          >
+            Load meme
+          </button>
+        </div>
         <label for="meme_template" className="memeTemplateInput">
-          <div>Specific meme template:</div>
+          <div>Meme identificator:</div>
           <input
             id="meme-template"
             placeholder={memeIds[Math.floor(mathRandom * memeIds.length)]}
