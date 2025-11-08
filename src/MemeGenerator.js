@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { saveAs } from 'file-saver';
 
-export default function MemeGenerator(props) {
+export default function MemeGenerator() {
   const [memeUrls, setMemesUrls] = useState([]);
   const [memeIds, setMemeIds] = useState([]);
   const [memesArray, setMemesArray] = useState([]);
@@ -10,6 +10,8 @@ export default function MemeGenerator(props) {
   const [mathRandom, setMathRandom] = useState(Math.random());
   const [memeTemplateUrl, setMemeTemplateUrl] = useState();
   const [currentId, setCurrentId] = useState();
+  const [topCaption, setTopCaption] = useState('');
+  const [bottomCaption, setBottomCaption] = useState('');
 
   useEffect(() => {
     async function fetchMemes() {
@@ -27,7 +29,6 @@ export default function MemeGenerator(props) {
     function getRandomUrl() {
       const fetchedUrl = memeUrls[Math.floor(mathRandom * memeUrls.length)];
       const correspondingId = memeIds[Math.floor(mathRandom * memeIds.length)];
-      console.log(fetchedUrl);
       //setPngUrl(fetchedUrl);
       if (memeTemplateUrl) {
         setPngUrl(memeTemplateUrl);
@@ -46,48 +47,76 @@ export default function MemeGenerator(props) {
     if (pngUrl) {
       function changeUrlToJpgFormat() {
         const jpgUrl = `${pngUrl.split('.jpg').join(``)}`;
-        const captionedUrl = `${jpgUrl}${props.topCaption ? '/' : ''}${
-          props.topCaption
-        }${props.bottomCaption ? '/' : ''}${props.bottomCaption}.jpg`;
+        const captionedUrl = `${jpgUrl}${topCaption ? '/' : ''}${topCaption}${
+          bottomCaption ? '/' : ''
+        }${bottomCaption}.jpg`;
         setRandomUrl(captionedUrl);
         console.log('captionedUrl:', captionedUrl);
       }
       changeUrlToJpgFormat();
     }
-  }, [pngUrl, props.topCaption, props.bottomCaption]);
+  }, [pngUrl, topCaption, bottomCaption]);
 
   function downloadImage() {
     saveAs(randomUrl, `${currentId}.jpg`);
   }
 
   return (
-    <>
-      <div>Meme Generator</div>
-      <img
-        src={randomUrl}
-        height="400"
-        width="460"
-        data-test-id="meme-image"
-      ></img>
-      <button onClick={() => setMathRandom(Math.random())}>
-        Select random meme
-      </button>
-      <label for="meme_template">
-        Meme template
-        <input
-          id="meme-template"
-          placeholder={memeIds[Math.floor(mathRandom * memeIds.length)]}
-          onChange={(e) => {
-            let userInput = e.currentTarget.value;
-            const obj = memesArray.find((o) => o.id === userInput);
-            if (obj) {
-              setMemeTemplateUrl(obj.blank);
-              setCurrentId(obj.id);
-            }
-          }}
-        ></input>
-      </label>
-      <button onClick={() => downloadImage()}>Download</button>
-    </>
+    <div className="rootDiv">
+      <div className="title">Random Meme Generator</div>
+      <div className="imageContainer">
+        <img
+          className="memeImg"
+          src={randomUrl}
+          height="400"
+          width="460"
+          data-test-id="meme-image"
+        ></img>
+        <button
+          className="selectMemeButton"
+          onClick={() => setMathRandom(Math.random())}
+        >
+          Load meme
+        </button>
+        <label for="meme_template" className="memeTemplateInput">
+          <div>Specific meme template:</div>
+          <input
+            id="meme-template"
+            placeholder={memeIds[Math.floor(mathRandom * memeIds.length)]}
+            onChange={(e) => {
+              let userInput = e.currentTarget.value;
+              const obj = memesArray.find((o) => o.id === userInput);
+              if (obj) {
+                setMemeTemplateUrl(obj.blank);
+                setCurrentId(obj.id);
+              }
+            }}
+          ></input>
+        </label>
+        <label for="top_text">
+          <div>Top text:</div>
+          <input
+            id="top_text"
+            onChange={(event) => {
+              let topText = event.currentTarget.value;
+              topText = topText.replace(/ /g, '_');
+              setTopCaption(topText);
+            }}
+          ></input>
+        </label>
+        <label for="bottom_text">
+          <div>Bottom text:</div>
+          <input
+            id="bottom_text"
+            onChange={(event) => {
+              let botText = event.currentTarget.value;
+              botText = botText.replace(/ /g, '_');
+              setBottomCaption(botText);
+            }}
+          ></input>
+        </label>
+        <button onClick={() => downloadImage()}>Download meme</button>
+      </div>
+    </div>
   );
 }
