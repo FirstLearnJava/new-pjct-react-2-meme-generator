@@ -9,21 +9,38 @@
   width: 100vw;
   min-height: 100vh;
 }
-.imageContainer {
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 1.6rem;
+  margin-bottom: 0.6rem;
+  color: rgb(6, 6, 40);
+}
+.flexContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 88%;
 }
 
-.imageContainer > label {
-  align-self: start;
+.flexContainer > label {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  min-width: 32.5vw;
 }
-.imageContainer > label > input {
-  width: 250px;
+.flexContainer > label > input {
+  width: 64%;
   margin-bottom: 14px;
+  border-radius: 4px;
+  border-width: 1px;
+  padding: 2px;
+}
+.imageContainer {
+  min-height: 56vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 button {
   background-color: darkblue;
@@ -34,42 +51,63 @@ button {
   width: 150px;
   font-size: 14px;
 }
+.downloadButton {
+  margin-top: 8px;
+}
 button:hover {
   scale: 1.03;
   font-size: 15px;
 }
-.title {
-  font-size: 30px;
-  font-weight: 600;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin-top: 2.2rem;
-  margin-bottom: 0.8rem;
-  color: rgb(6, 6, 40);
-}
+
 .memeImg {
-  margin-bottom: 1rem;
+  margin-bottom: 8px;
   border-radius: 3px;
-  height: 400px;
-  width: 460px;
+  max-height: 53vh;
+  max-width: 32.5vw;
 }
 .selectMemeButton {
   margin-bottom: 18px;
 }
 .memeTemplateInput {
-  align-self: start;
+  margin-top: 6px;
 }
 .buttonContainer {
   height: 48px;
 }
-@media (max-width: 576px) {
-  .memeImg {
-    height: 260px;
-    width: 300px;
+
+@media (max-width: 1200px) {
+  .imageContainer {
+    min-height: 55vh;
+    width: 100%;
   }
-  .imageContainer > label > input {
+
+  .flexContainer > label {
+    display: flex;
+    justify-content: space-between;
+    min-width: 48vw;
+  }
+  .memeImg {
+    margin-bottom: 8px;
+    border-radius: 3px;
+    max-height: 79vh;
+    max-width: 48vw;
+  }
+}
+@media (max-width: 576px) {
+  .imageContainer {
+    min-height: 55vh;
+    width: 100%;
+  }
+  .memeImg {
+    min-width: 100%;
+    max-height: 53vh;
+  }
+
+  .flexContainer > label > input {
     width: 160px;
   }
-  .imageContainer > label {
+  .flexContainer > label {
+    min-width: 100%;
     font-size: 13px;
     font-weight: 500;
   }

@@ -64,12 +64,14 @@ export default function MemeGenerator() {
   return (
     <div className="rootDiv">
       <div className="title">Random Meme Generator</div>
-      <div className="imageContainer">
-        <img
-          className="memeImg"
-          src={randomUrl}
-          data-test-id="meme-image"
-        ></img>
+      <div className="flexContainer">
+        <div className="imageContainer">
+          <img
+            className="memeImg"
+            src={randomUrl}
+            data-test-id="meme-image"
+          ></img>
+        </div>
         <div className="buttonContainer">
           <button
             className="selectMemeButton"
@@ -115,7 +117,9 @@ export default function MemeGenerator() {
             }}
           ></input>
         </label>
-        <button onClick={() => downloadImage()}>Download meme</button>
+        <button className="downloadButton" onClick={() => downloadImage()}>
+          Download meme
+        </button>
       </div>
     </div>
   );
