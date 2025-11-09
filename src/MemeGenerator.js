@@ -51,7 +51,6 @@ export default function MemeGenerator() {
           bottomCaption ? '/' : ''
         }${bottomCaption}.jpg`;
         setRandomUrl(captionedUrl);
-        console.log('captionedUrl:', captionedUrl);
       }
       changeUrlToJpgFormat();
     }
@@ -88,7 +87,9 @@ export default function MemeGenerator() {
             onChange={(e) => {
               let userInput = e.currentTarget.value;
               const obj = memesArray.find((o) => o.id === userInput);
-              if (obj) {
+              if (!obj) {
+                setMemeTemplateUrl(undefined);
+              } else {
                 setMemeTemplateUrl(obj.blank);
                 setCurrentId(obj.id);
               }
